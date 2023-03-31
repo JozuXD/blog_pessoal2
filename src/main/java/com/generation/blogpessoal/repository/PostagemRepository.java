@@ -9,8 +9,9 @@ import org.springframework.stereotype.Repository;
 import com.generation.blogpessoal.model.Postagem;
 
 @Repository
-public interface PostagemRepository extends JpaRepository<Postagem, Long>{
-	
-	public List <Postagem> findAllByTituloContainingIgnoreCase(@Param("titulo")String titulo);
+public interface PostagemRepository extends JpaRepository<Postagem, Long> { //Postagem = tabela, Long = id (tipo)
 
+	public List <Postagem> findAllByTituloContainingIgnoreCase(@Param("titulo") String titulo); //esse titulo está "vindo" da model, entao tem que estar escrito do mesmo jeito que está lá
+	
+	
 }

@@ -17,17 +17,17 @@ import jakarta.validation.constraints.NotNull;
 @Table(name = "tb_temas")
 public class Tema {
 	
-	@Id
+	@Id	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull(message = "O Atributo Descrição é obrigatorio")
+	@NotNull(message = "O Atributo Descrição é obrigatório!")
 	private String descricao;
 	
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tema")
 	private List<Postagem> postagem;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -37,13 +37,19 @@ public class Tema {
 	}
 
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 	
-	
+	public List<Postagem> getPostagem() {
+		return postagem;
+	}
+
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
+	}
 
 }

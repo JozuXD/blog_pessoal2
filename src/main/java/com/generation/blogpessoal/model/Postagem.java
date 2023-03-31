@@ -24,12 +24,11 @@ public class Postagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
-	@Size(min = 3, max = 100)
+	@NotBlank //nao deixa passar nem nulo nem vazio (espaço)
+	@Size(min = 3, max = 1000)
 	private String titulo;
 	
 	@NotNull
-	@Size(min =10 , max = 1000)
 	private String texto;
 	
 	@UpdateTimestamp
@@ -42,6 +41,14 @@ public class Postagem {
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Usuario usuario;
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	public Long getId() {
 		return id;
@@ -74,7 +81,7 @@ public class Postagem {
 	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
-
+	
 	public Tema getTema() {
 		return tema;
 	}
@@ -82,17 +89,5 @@ public class Postagem {
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-
-	
-
 	
 }
